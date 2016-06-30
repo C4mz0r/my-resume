@@ -109,8 +109,8 @@
 		// pop up on screen, so we don't want to auto-focus on small screens
 		function focusInputIfUsingLargerScreen()
 		{	
-			alert($(window).width());		
-			if ($(window).width() >= 800)			
+			//alert($(window).width());		
+			if ($(window).width() > 980)			
 				$("#my-input").focus();
 		}
 		
