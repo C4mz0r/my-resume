@@ -108,7 +108,8 @@
 		// On small screen (read "mobile"), setting input focus causes the keyboard to
 		// pop up on screen, so we don't want to auto-focus on small screens
 		function focusInputIfUsingLargerScreen()
-		{			
+		{	
+			alert($(window).width());		
 			if ($(window).width() >= 800)			
 				$("#my-input").focus();
 		}
