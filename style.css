@@ -53,7 +53,7 @@ a {
 	margin-bottom: 5px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 480px) {
     button > span + span{
         display: none;
     }
