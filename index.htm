@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<!-- <link rel="stylesheet" type="text/css" href="reset.css"> -->
+		
+		<!--<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">				
+		<title>Resume</title>
+	</head>
+	<body>		 
+		<div id="monitor">
+			<div id="label">Resume Terminal</div>
+			<div id="screen">
+				<div id="textreplace"></div>				
+			</div>
+			<div id="inputs">
+				c:/> <input id="my-input"></input>
+			</div> 		
+			<div id="controls">								
+				<button id="reset" type="button" class="btn btn-default btn-danger btn-lg"><span class="glyphicon glyphicon-off"></span><span>Reset</span></button>
+				<button id="help" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-question-sign"></span><span>Help</span></button>
+				<button id="work" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-briefcase"></span><span>Work</span></button>
+				<button id="portfolio" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-folder-open"></span><span>Portfolio</span></button>
+				<button id="skills" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-certificate"></span><span>Skills</span></button>
+				<button id="education" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-education"></span><span>Education</span></button>				
+				<button id="about" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span><span>About</span></button>
+			</div>
+		</div>
+	
+	
+		
+	<script>				
+		// Keys are the commands that the user will type,
+		// and the values are the page which should be rendered.
+		// These keys should be lower case, since we convert the user's input to lower case.
+		var commandMappings = {};
+		commandMappings['help'] = 'help.htm';
+		commandMappings['about'] = 'about.htm';
+		commandMappings['skills'] = 'skills.htm';
+		commandMappings['education'] = 'education.htm';
+		commandMappings['portfolio'] = 'portfolio.htm';
+		commandMappings['welcome'] = 'welcome.htm';
+		commandMappings['work'] = 'work.htm';
+		commandMappings['unknown'] = 'unknown.htm';
+		
+		// Show the welcome screen on the terminal
+		loadScreen('welcome', commandMappings);
+		
+		// Set the prompt on the input field
+		$("#my-input").focus();
+		
+		// Wait for key code 13 (enter key) to be pressed
+	    // then loads the typed-in screen
+		$("#my-input").keydown(function(event){
+			if(event.keyCode == 13) {
+				loadScreen($("#my-input").val().toLowerCase(), commandMappings);				
+			}
+		});
+			
+			
+		// Hook up the buttons to the various load screens
+		$("#reset").click(function(){			
+			loadScreen('welcome', commandMappings);
+		});
+		
+		$("#help").click(function(){			
+			loadScreen('help', commandMappings);
+		});
+		
+		$("#about").click(function(){			
+			loadScreen('about', commandMappings);
+		});
+		
+		$("#work").click(function(){			
+			loadScreen('work', commandMappings);
+		});
+			
+		$("#portfolio").click(function(){			
+			loadScreen('portfolio', commandMappings);
+		});
+		
+		$("#education").click(function(){			
+			loadScreen('education', commandMappings);
+		});
+		
+		$("#skills").click(function(){			
+			loadScreen('skills', commandMappings);
+		});
+			
+		// Finds the screen from the mappings hash
+		// and loads it.  Loads unknown if not found.
+		function loadScreen(screenName, mappings)
+		{
+			var pageToRender = mappings[screenName];
+			if (pageToRender == undefined)
+				pageToRender = mappings['unknown'];
+				
+			$("#textreplace").load(pageToRender);
+			clearPrompt();
+		}
+		
+		function clearPrompt()
+		{
+			$("#my-input").val('');
+			$("#my-input").focus();
+		}
+		
+	</script>
+		
+	</body>
+</html>
