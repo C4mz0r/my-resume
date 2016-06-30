@@ -46,8 +46,8 @@
 		// Show the welcome screen on the terminal
 		loadScreen('welcome', commandMappings);
 		
-		// Set the prompt on the input field
-		$("#my-input").focus();
+		// Set the prompt on the input field if using larger screen		
+		focusInputIfUsingLargerScreen();
 		
 		// Wait for key code 13 (enter key) to be pressed
 	    // then loads the typed-in screen
@@ -102,7 +102,15 @@
 		function clearPrompt()
 		{
 			$("#my-input").val('');
-			$("#my-input").focus();
+			focusInputIfUsingLargerScreen();
+		}
+		
+		// On small screen (read "mobile"), setting input focus causes the keyboard to
+		// pop up on screen, so we don't want to auto-focus on small screens
+		function focusInputIfUsingLargerScreen()
+		{			
+			if ($(window).width() >= 800)			
+				$("#my-input").focus();
 		}
 		
 	</script>
