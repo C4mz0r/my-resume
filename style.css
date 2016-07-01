@@ -6,6 +6,11 @@ a {
 	color: white;
 }
 
+.underline {
+    font-size: 14pt;
+    border-bottom: 3px dashed #0F0;
+}
+
 #monitor {
 	background-color: #d3d3d3;
 	border: 1px solid black;	
@@ -14,6 +19,10 @@ a {
 	margin: 0 auto;
 	overflow:hidden;
 	box-shadow: 10px 10px 5px #888888;
+	
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 #label  {
@@ -25,7 +34,9 @@ a {
 	color: #0F0;
 	width: 90%;	
 	margin: 0 auto;
-	height: 400px;
+
+	flex: 1;
+
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	position: relative;	
@@ -42,25 +53,22 @@ a {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	font-size: 16pt;
+	color: white;
 }
 
 #controls {
     display: flex;
     justify-content:space-between;
     width: 90%;
-	margin: 0 auto;	
-	margin-top: 5px;
-	margin-bottom: 5px;
+    margin: 0 auto;	
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 @media screen and (max-width: 800px) {
     button > span + span{
         display: none;
     }
-}
-
-#inputs {
-	color: white;	
 }
 
 #my-input {
